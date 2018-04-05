@@ -194,6 +194,7 @@ class LiteCNN:
 		# print "\n\n\n\n"
 		return convolved_features
 
+	# FULLY CONNECTED LAYER
 	def dense_layer(self, X, layer_i=0):
 		W = self.layers[layer_i]["param_0"]
 		b = self.layers[layer_i]["param_1"]
@@ -312,6 +313,7 @@ class LiteCNN:
 
 	@staticmethod
 	def softmax_layer2D(w):
+		# axis 0 is max of each column, 1 is max of each row
 		maxes = np.amax(w, axis=1)
 		maxes = maxes.reshape(maxes.shape[0], 1)
 		e = np.exp(w - maxes)
